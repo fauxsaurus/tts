@@ -10,17 +10,48 @@ main {
 	width: 100%;
 }
 
+[id^='toggle-menu-']:not(:checked) + aside {
+	display: none;
+}
+
 /** @note Special thanks to https://cssgrid-generator.netlify.app/ for the grid code */
+
+/**
+	<input checked hidden id="toggle-menu-options" type="checkbox" />
+	<input checked hidden id="toggle-menu-help" type="checkbox" />
+*/
+
+[id='toggle-menu-options']:checked ~ .layout-grid {
+	--menu-options-width: 1fr;
+}
+[id='toggle-menu-options']:not(:checked) ~ .layout-grid {
+	--menu-options-width: 0fr;
+}
+[id='toggle-menu-options']:not(:checked) ~ .layout-grid .menu-options {
+	display: none;
+}
+
+[id='toggle-menu-help']:checked ~ .layout-grid {
+	--menu-help-width: 1fr;
+}
+[id='toggle-menu-help']:not(:checked) ~ .layout-grid {
+	--menu-help-width: 0fr;
+}
+[id='toggle-menu-help']:not(:checked) ~ .layout-grid .menu-help {
+	display: none;
+}
 
 .layout-grid {
 	--color-red: #c33;
 
 	display: grid;
-	grid-template-columns: 1fr 2fr 1fr;
+	grid-template-columns: var(--menu-options-width) 2fr var(--menu-help-width);
 	grid-template-rows: min-content 1fr min-content;
 	grid-column-gap: 0;
 	grid-row-gap: 0;
 	height: 100%;
+
+	transition: all 0.5s;
 }
 
 .layout-top {
@@ -184,8 +215,4 @@ button label::after {
 	position: absolute;
 	top: 0;
 	width: 100%;
-}
-
-[id^='toggle-menu-']:not(:checked) + aside {
-	display: none;
 }
