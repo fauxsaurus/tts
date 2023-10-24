@@ -1,6 +1,6 @@
 import {createSignal} from 'solid-js'
 import './App.css'
-import {Slider} from './components'
+import {Dropdown, Slider} from './components'
 
 /** @todo
  * UX
@@ -9,7 +9,7 @@ import {Slider} from './components'
  * hide options
  * hide help
  * holding the button down should continue to increment the value until the user lifts it up (or hits the limit)
- * ✓▼
+ * ✓
  * button to put help text into the text area & read aloud
  * save options into local storage (with a version # for switch incremental functionality or just use Object.assign(defaultoptions, saved options||{}))
  * 	highlight spoken text, time taken/remaining (or that very least what sentence chunk out of what--or approximate it? test by trying to get the word count and average speaking speed--possibly with a text with an insisible muted voice at the begining to verify)
@@ -64,8 +64,6 @@ const App = () => {
 	utterance().addEventListener('resume', () => setIsPlaying(true))
 	utterance().addEventListener('start', () => setIsPlaying(true))
 
-	console.log(pitch(), speed(), volume())
-
 	return (
 		<form class="layout-grid" onSubmit={event => event.preventDefault()}>
 			<header class="layout-top">
@@ -95,22 +93,17 @@ const App = () => {
 				</fieldset>
 				<fieldset>
 					<legend>Voice</legend>
-					<label for="option-voice" title="voice"></label>
-					<select
-						id="option-voice"
-						oninput={event =>
-							setSelectedVoice(
-								voices().find(
-									voice => voice.voiceURI === event.currentTarget.value,
-								),
-							)
+					<Dropdown
+						name="option-voice"
+						onInput={value =>
+							setSelectedVoice(voices().find(voice => voice.voiceURI === value))
 						}
-						value={selectedVoice()?.voiceURI}
-					>
-						{voices().map(voice => {
-							return <option value={voice.voiceURI}>{voice.name}</option>
-						})}
-					</select>
+						options={Object.assign(
+							{},
+							...voices().map(voice => ({[voice.voiceURI]: voice})),
+						)}
+						value={selectedVoice()}
+					/>
 				</fieldset>
 				<fieldset>
 					<legend>Volume</legend>
@@ -132,8 +125,13 @@ const App = () => {
 				</fieldset>
 				<fieldset>
 					<legend>Language</legend>
-					<label for="option-language" title="language"></label>
-					<select id="option-language"></select>
+					<Dropdown
+						disabled
+						onInput={() => void 0}
+						options={{English: 'English'}}
+						name="language"
+						value="English"
+					/>
 				</fieldset>
 				<fieldset>
 					<legend>Pitch</legend>
