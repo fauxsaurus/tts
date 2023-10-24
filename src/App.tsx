@@ -121,6 +121,8 @@ const App = () => {
 						event.preventDefault()
 
 						if (isPlaying()) return void synth.pause()
+						/** @note resume is *very* important. Not only does it save the user's spot, but running the code below when synth is paused crashes the entire speech synthesis service so hard that not even the [MDN demo](https://mdn.github.io/dom-examples/web-speech-api/speak-easy-synthesis/) works until the computer is restareted */
+						if (synth.paused) return void synth.resume()
 
 						const selectedVoiceRef = selectedVoice()
 						if (!selectedVoiceRef) throw new Error('No Selected Voice!')
