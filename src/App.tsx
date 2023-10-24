@@ -58,14 +58,14 @@ const App = () => {
 					<abbr title="Text to Speech">TTS</abbr>
 				</h1>
 			</header>
-			<aside>
+			<aside class="layout-left menu-settings">
 				<ul>
 					<li>
-						<label>Speed</label>
+						<label title="speed"></label>
 						<input disabled type="range" />
 					</li>
 					<li>
-						<label>Voice</label>
+						<label title="voice"></label>
 						<select
 							oninput={event =>
 								setSelectedVoice(
@@ -82,27 +82,21 @@ const App = () => {
 						</select>
 					</li>
 					<li>
-						<label>Volume</label>
+						<label title="volume"></label>
 						<input disabled type="range" />
 					</li>
 					<li>
-						<label>Loop</label>
+						<label title="loop"></label>
 						<input type="checkbox" />
 					</li>
 					<li>
-						<label>Language</label>
+						<label title="language"></label>
 						<select></select>
 					</li>
 
 					<li>
-						<label>Pitch</label>
+						<label title="pitch"></label>
 						<input disabled type="range" />
-					</li>
-					<li>
-						<a>Record & Export (unavailable due to)</a>
-					</li>
-					<li>
-						<a>View Source Code</a>
 					</li>
 				</ul>
 			</aside>
