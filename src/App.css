@@ -13,6 +13,8 @@ main {
 /** @note Special thanks to https://cssgrid-generator.netlify.app/ for the grid code */
 
 .layout-grid {
+	--color-red: #c33;
+
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr;
 	grid-template-rows: min-content 1fr min-content;
@@ -22,6 +24,8 @@ main {
 }
 
 .layout-top {
+	background: var(--color-red);
+	border-bottom: 1px solid #000;
 	display: flex;
 	grid-area: 1 / 1 / 2 / 4;
 	justify-content: space-between;
@@ -38,9 +42,15 @@ main {
 	grid-area: 2 / 3 / 3 / 4;
 }
 .layout-bottom {
+	background: var(--color-red);
+	border-top: 1px solid #000;
 	display: flex;
 	grid-area: 3 / 1 / 4 / 4;
 	justify-content: space-between;
+}
+
+button {
+	border-radius: 0;
 }
 
 h1,
@@ -54,33 +64,119 @@ textarea {
 	resize: none;
 }
 
-.menu-settings,
+.menu-options,
 .menu-help {
 	overflow-x: hidden;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
-.menu-settings label::before {
-	background-color: #f99;
-	content: attr(title);
+.menu-options {
+	--option-icon-length: 2rem;
+}
+
+.menu-options fieldset {
+	border: 0;
+	border-bottom: 1px solid #000;
+	margin-inline-start: 0;
+	margin-inline-end: 0;
+	padding: 0;
+}
+
+.menu-options legend {
+	background-color: var(--color-red);
+	border-bottom: 1px solid #000;
 	display: block;
 	font-size: 0.8rem;
 	padding: 0 0.2rem;
 	text-transform: capitalize;
 	width: 100%;
 }
+fieldset .slider {
+	display: flex;
+}
 
-.menu-settings li {
-	border-bottom: 1px solid #000;
+.slider .range {
+	flex: auto;
+	position: relative;
+}
+
+.slider .range > * {
+	height: 100%;
+	position: absolute;
+	width: 100%;
+}
+.stretch {
+	flex: 1 1 auto;
+}
+.shrink {
+	flex: 0 0 auto;
+}
+.slider > * {
+	float: left;
+	margin: 0;
+}
+
+.slider meter {
+	border: 0;
+	border-radius: 0;
+}
+
+.slider meter::-webkit-meter-inner-element {
+	height: 100%;
+}
+.slider meter::-webkit-meter-bar {
+	border: 0;
+	border-radius: 0;
+	height: 100%;
+}
+
+.slider [type='range'] {
+	opacity: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.slider [type='number'] {
+	border: 0;
+	border-radius: 0;
+}
+
+.menu-options button,
+.menu-options label {
+	background-color: var(--color-red);
+	display: block;
+	height: var(--option-icon-length);
+	padding: 0;
+	position: relative;
+	text-align: center;
+	width: var(--option-icon-length);
+}
+
+.menu-options input {
+	margin: 0;
 }
 
 .menu-help {
 	padding: 0 1rem;
 }
 
-.menu-settings ul {
-	list-style-type: none;
-	margin-block-start: 0;
-	margin-block-end: 0;
-	padding-inline-start: 0;
+.toggle-menu {
+	position: relative;
+}
+
+button label {
+	height: 100%;
+	width: 100%;
+}
+button label::after {
+	content: '';
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+[id^='toggle-menu-']:not(:checked) + aside {
+	display: none;
 }
