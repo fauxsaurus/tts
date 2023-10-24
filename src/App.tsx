@@ -3,9 +3,11 @@ import './App.css'
 
 /** @todo
  * UX
+ * make settings work once the audio has been paused
  * dark mode
  * hide options
  * hide help
+ * holding the button down should continue to increment the value until the user lifts it up (or hits the limit)
  * ✓▼
  * button to put help text into the text area & read aloud
  * save options into local storage (with a version # for switch incremental functionality or just use Object.assign(defaultoptions, saved options||{}))
@@ -39,6 +41,7 @@ type IProps = {
 	min: number
 	onInput: (value: number) => void
 	step: number
+	unit?: string
 	value: number
 }
 
@@ -78,6 +81,7 @@ const Slider = (props: IProps) => {
 				type="number"
 				value={props.value}
 			/>
+			{props.unit ?? ''}
 		</div>
 	)
 }
@@ -94,7 +98,7 @@ const App = () => {
 	const [selectedVoice, setSelectedVoice] = createSignal(getDefaultVoice())
 	const [utterance] = createSignal(new globalThis.SpeechSynthesisUtterance(text()))
 
-	const [pitch, setPitch] = createSignal(1)
+	const [pitch, setPitch] = createSignal(100)
 	const [speed, setSpeed] = createSignal(1)
 	const [volume, setVolume] = createSignal(100)
 
@@ -129,7 +133,14 @@ const App = () => {
 				<fieldset>
 					<legend>Speed</legend>
 					{/* @note actual values are 10-0.1 */}
-					<Slider max={10} min={0.1} onInput={setSpeed} step={0.1} value={speed()} />
+					<Slider
+						max={10}
+						min={0.1}
+						onInput={setSpeed}
+						step={0.1}
+						unit="x"
+						value={speed()}
+					/>
 				</fieldset>
 				<fieldset>
 					<legend>Voice</legend>
@@ -153,7 +164,14 @@ const App = () => {
 				<fieldset>
 					<legend>Volume</legend>
 					{/* actual values are 0-1 */}
-					<Slider max={100} min={0} onInput={setVolume} step={1} value={volume()} />
+					<Slider
+						max={100}
+						min={0}
+						onInput={setVolume}
+						step={1}
+						unit="%"
+						value={volume()}
+					/>
 				</fieldset>
 				<fieldset>
 					<legend>Loop</legend>
@@ -168,7 +186,15 @@ const App = () => {
 				</fieldset>
 				<fieldset>
 					<legend>Pitch</legend>
-					<Slider max={2} min={0} onInput={setPitch} step={0.1} value={pitch()} />
+					{/* note the actual values are 0-2 */}
+					<Slider
+						max={200}
+						min={0}
+						onInput={setPitch}
+						step={1}
+						unit="%"
+						value={pitch()}
+					/>
 				</fieldset>
 			</aside>
 			<textarea
@@ -208,8 +234,11 @@ const App = () => {
 						const selectedVoiceRef = selectedVoice()
 						if (!selectedVoiceRef) throw new Error('No Selected Voice!')
 
-						utterance().voice = selectedVoiceRef
+						utterance().pitch = pitch() / 100
+						utterance().rate = speed()
 						utterance().text = text()
+						utterance().voice = selectedVoiceRef
+						utterance().volume = volume() / 100
 
 						synth.speak(utterance())
 					}}
