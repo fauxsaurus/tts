@@ -25,37 +25,24 @@ const CONFIG = {
 Enter text to read aloud here.`,
 }
 
-const synth = globalThis.speechSynthesis
-
 /** @note Plasma */
-/** @note Special thanks to: https://stackoverflow.com/a/52005323 */
-const getVoices = () =>
-	new Promise<SpeechSynthesisVoice[]>((resolve, reject) => {
-		const synth = globalThis.speechSynthesis
-		let id = 0
-
-		id = setInterval(() => {
-			if (!synth.getVoices().length) return
-
-			resolve(synth.getVoices())
-			clearInterval(id)
-		}, 100)
-	})
-
-const NON_JSON_CONFIG = {
-	voices: globalThis.speechSynthesis.getVoices(),
-}
+const synth = globalThis.speechSynthesis
+const getVoices = () => synth.getVoices()
+const getDefaultVoice = () => getVoices().find(voice => voice.default)
 
 const App = () => {
 	const [text, setText] = createSignal(CONFIG.exampleText[0])
-	const [voices, setVoices] = createSignal<SpeechSynthesisVoice[]>([])
+	const [voices, setVoices] = createSignal(getVoices())
 	const [isPlaying, setIsPlaying] = createSignal(false)
+	const [selectedVoice, setSelectedVoice] = createSignal(getDefaultVoice())
+	const [utterance] = createSignal(new globalThis.SpeechSynthesisUtterance(text()))
 
-	getVoices().then(setVoices)
+	if ('onvoiceschanged' in synth)
+		synth.onvoiceschanged = () => {
+			setVoices(getVoices())
+			if (!selectedVoice()) setSelectedVoice(getDefaultVoice())
+		}
 
-	const [selectedVoice, setSelectedVoice] = createSignal(
-		NON_JSON_CONFIG.voices.find(voice => voice.default)?.voiceURI ?? '',
-	)
 
 	return (
 		<form>
@@ -74,8 +61,14 @@ const App = () => {
 					<li>
 						<label>Voice</label>
 						<select
-							oninput={event => setSelectedVoice(event.currentTarget.value)}
-							value={selectedVoice()}
+							oninput={event =>
+								setSelectedVoice(
+									voices().find(
+										voice => voice.voiceURI === event.currentTarget.value,
+									),
+								)
+							}
+							value={selectedVoice()?.voiceURI}
 						>
 							{voices().map(voice => {
 								return <option value={voice.voiceURI}>{voice.name}</option>
