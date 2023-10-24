@@ -112,7 +112,21 @@ const App = () => {
 			>
 				{text()}
 			</textarea>
-			<footer>
+			<aside class="layout-right menu-help">
+				<h2>Help</h2>
+				<p>
+					Enter text into the field on the left and hit play at the bottom to listen to
+					it.
+				</p>
+				<h3>Can I export the audio to a file?</h3>
+				<p>unavailable due to</p>
+				<h3>I found a bug, what should I do?</h3>
+				<p>
+					Please report it <a>Here</a>!
+				</p>
+				<a>View Source Code</a>
+			</aside>
+			<footer class="layout-bottom">
 				<button disabled title="Rewind">
 					⏪
 				</button>
