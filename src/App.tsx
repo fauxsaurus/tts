@@ -6,8 +6,6 @@ import {Dropdown, Slider} from './components'
  * UX
  * make settings work once the audio has been paused
  * dark mode
- * hide options
- * hide help
  * holding the button down should continue to increment the value until the user lifts it up (or hits the limit)
  * ✓
  * button to put help text into the text area & read aloud
@@ -22,7 +20,6 @@ import {Dropdown, Slider} from './components'
  * Misc
  * firefox, android, & iPhone styling
  * 	bug fixes, error message banner at the top
- * need to expand centeral column when the sidebars are toggled off
  * position absolute sidebars on portrait with a min rem width
  * CSS grid needs to respect zooming
  * what happens if the text changes between pausing... (need a way to clear that utterance and start anew/from a certain point)
@@ -119,12 +116,12 @@ const App = () => {
 							value={volume()}
 						/>
 					</fieldset>
-					<fieldset>
+					{/* <fieldset>
 						<legend>Loop</legend>
 						<label for="option-loop" title="loop"></label>
 						<input id="option-loop" hidden type="checkbox" />
 						<span>On/Off</span>
-					</fieldset>
+					</fieldset> */}
 					<fieldset>
 						<legend>Language</legend>
 						<Dropdown
