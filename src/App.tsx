@@ -3,7 +3,7 @@ import './App.css'
 
 /** @todo
  * UI
- * 	functionality: toggle play/pause button when audio ends, fastforward, rewind
+ * 	functionality: pause audio when it is playing
  * features
  * UX
  * save settings into local storage (with a version # for switch incremental functionality or just use Object.assign(defaultSettings, saved Settings||{}))
@@ -14,6 +14,8 @@ import './App.css'
  * Localization
  * pull all magic strings out & into a localization object
  * spanish & mandarin, see a language you want added?
+ * Misc
+ * 	bug fixes, error message banner at the top
  */
 
 /* <button onClick={() => setCount(count => count + 1)}>count is {count()}</button> */
@@ -43,6 +45,10 @@ const App = () => {
 			if (!selectedVoice()) setSelectedVoice(getDefaultVoice())
 		}
 
+	utterance().addEventListener('end', () => setIsPlaying(false))
+	utterance().addEventListener('pause', () => setIsPlaying(false))
+	utterance().addEventListener('resume', () => setIsPlaying(true))
+	utterance().addEventListener('start', () => setIsPlaying(true))
 
 	return (
 		<form>
@@ -107,25 +113,30 @@ const App = () => {
 				{text()}
 			</textarea>
 			<footer>
-				<button title="rewind">⏪</button>
+				<button disabled title="Rewind">
+					⏪
+				</button>
 				<button
 					onClick={event => {
 						event.preventDefault()
 
-						const utterance = new globalThis.SpeechSynthesisUtterance(text())
+						if (isPlaying()) return void synth.pause()
 
-						/** @todo do something if this breaks down... */
-						utterance.voice = voices().find(
-							voice => voice.voiceURI === selectedVoice(),
-						)!
+						const selectedVoiceRef = selectedVoice()
+						if (!selectedVoiceRef) throw new Error('No Selected Voice!')
 
-						synth.speak(utterance)
+						utterance().voice = selectedVoiceRef
+						utterance().text = text()
+
+						synth.speak(utterance())
 					}}
 					title={isPlaying() ? 'Pause' : 'Play'}
 				>
 					{isPlaying() ? '⏸' : '⏵'}
 				</button>
-				<button title="fastforward">⏩</button>
+				<button disabled title="Fast Forward">
+					⏩
+				</button>
 			</footer>
 		</form>
 	)
