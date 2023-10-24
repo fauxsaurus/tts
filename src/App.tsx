@@ -3,7 +3,7 @@ import './App.css'
 
 /** @todo
  * UI
- * 	functionality: play/pause toggle, fastforward, rewind, highlight spoken text, get all voices, show all voices, select default voice
+ * 	functionality: toggle play/pause button when audio ends, fastforward, rewind
  * features
  * UX
  * save settings into local storage (with a version # for switch incremental functionality or just use Object.assign(defaultSettings, saved Settings||{}))
@@ -11,6 +11,9 @@ import './App.css'
  * accessibility
  * SVG & PNG (for iOS... come on, Apple, get your _stuff_ together, it's been a thing for over [*three* years now](https://caniuse.com/link-icon-svg) logo
  * 	skip to link in the before the aside
+ * Localization
+ * pull all magic strings out & into a localization object
+ * spanish & mandarin, see a language you want added?
  */
 
 /* <button onClick={() => setCount(count => count + 1)}>count is {count()}</button> */
@@ -21,6 +24,8 @@ const CONFIG = {
 	placholder: `Hi! I'm a text to speech app!
 Enter text to read aloud here.`,
 }
+
+const synth = globalThis.speechSynthesis
 
 /** @note Plasma */
 /** @note Special thanks to: https://stackoverflow.com/a/52005323 */
@@ -44,6 +49,7 @@ const NON_JSON_CONFIG = {
 const App = () => {
 	const [text, setText] = createSignal(CONFIG.exampleText[0])
 	const [voices, setVoices] = createSignal<SpeechSynthesisVoice[]>([])
+	const [isPlaying, setIsPlaying] = createSignal(false)
 
 	getVoices().then(setVoices)
 
@@ -63,7 +69,7 @@ const App = () => {
 				<ul>
 					<li>
 						<label>Speed</label>
-						<select></select>
+						<input disabled type="range" />
 					</li>
 					<li>
 						<label>Voice</label>
@@ -78,7 +84,11 @@ const App = () => {
 					</li>
 					<li>
 						<label>Volume</label>
-						<select></select>
+						<input disabled type="range" />
+					</li>
+					<li>
+						<label>Loop</label>
+						<input type="checkbox" />
 					</li>
 					<li>
 						<label>Language</label>
@@ -87,7 +97,7 @@ const App = () => {
 
 					<li>
 						<label>Pitch</label>
-						<select></select>
+						<input disabled type="range" />
 					</li>
 					<li>
 						<a>Record & Export (unavailable due to)</a>
@@ -104,9 +114,25 @@ const App = () => {
 				{text()}
 			</textarea>
 			<footer>
-				<button>Prev⏪</button>
-				<button>Play/Pause ⏯</button>
-				<button>Next ⏩</button>
+				<button title="rewind">⏪</button>
+				<button
+					onClick={event => {
+						event.preventDefault()
+
+						const utterance = new globalThis.SpeechSynthesisUtterance(text())
+
+						/** @todo do something if this breaks down... */
+						utterance.voice = voices().find(
+							voice => voice.voiceURI === selectedVoice(),
+						)!
+
+						synth.speak(utterance)
+					}}
+					title={isPlaying() ? 'Pause' : 'Play'}
+				>
+					{isPlaying() ? '⏸' : '⏵'}
+				</button>
+				<button title="fastforward">⏩</button>
 			</footer>
 		</form>
 	)
