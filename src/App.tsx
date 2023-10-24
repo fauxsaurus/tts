@@ -2,10 +2,11 @@ import {createSignal} from 'solid-js'
 import './App.css'
 
 /** @todo
- * UI
- * 	functionality: pause audio when it is playing
- * features
  * UX
+ * dark mode
+ * hide settings
+ * hide help
+ * button to put help text into the text area & read aloud
  * save settings into local storage (with a version # for switch incremental functionality or just use Object.assign(defaultSettings, saved Settings||{}))
  * 	highlight spoken text, time taken/remaining (or that very least what sentence chunk out of what--or approximate it? test by trying to get the word count and average speaking speed--possibly with a text with an insisible muted voice at the begining to verify)
  * accessibility
@@ -16,6 +17,7 @@ import './App.css'
  * spanish & mandarin, see a language you want added?
  * Misc
  * 	bug fixes, error message banner at the top
+ * what happens if the text changes between pausing... (need a way to clear that utterance and start anew/from a certain point)
  */
 
 /* <button onClick={() => setCount(count => count + 1)}>count is {count()}</button> */
@@ -51,12 +53,13 @@ const App = () => {
 	utterance().addEventListener('start', () => setIsPlaying(true))
 
 	return (
-		<form>
-			<header>
+		<form class="layout-grid">
+			<header class="layout-top">
 				<button>Settings/Logo</button>
 				<h1>
 					<abbr title="Text to Speech">TTS</abbr>
 				</h1>
+				<button>?</button>
 			</header>
 			<aside class="layout-left menu-settings">
 				<ul>
@@ -101,6 +104,7 @@ const App = () => {
 				</ul>
 			</aside>
 			<textarea
+				class="layout-center"
 				onChange={event => setText(event.currentTarget.value)}
 				placeholder={CONFIG.placholder}
 			>
