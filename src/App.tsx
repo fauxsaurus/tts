@@ -1,10 +1,13 @@
 import {createSignal} from 'solid-js'
-import './App.css'
+import './styles/App.css'
 import {Dropdown, Slider} from './components'
 
 /** @todo
- * UX
- * use an equilateral SVG triangle for dropdowns
+ * 1px gap between header & footer elements (give the middle one a stretch prop) & make the edge elements have the same width as height
+ * Remove display non-properties from toggleable sidebars. The help menu is still displayed after being hidden because of the padding. Said border box sizing to whatever check index CSS for the default they use. Probably apply it to everything.
+ * icons
+ * * use an equilateral SVG triangle for dropdowns (rounded corners)
+ * * play, pause, FF, Rewind, logo
  * SVG & PNG (for iOS... come on, Apple, get your _stuff_ together, it's been a thing for over [*three* years now](https://caniuse.com/link-icon-svg) logo
  * make settings work once the audio has been paused
  * dark mode
@@ -13,6 +16,7 @@ import {Dropdown, Slider} from './components'
  * save options into local storage (with a version # for switch incremental functionality or just use Object.assign(defaultoptions, saved options||{}))
  * 	highlight spoken text, time taken/remaining (or that very least what sentence chunk out of what--or approximate it? test by trying to get the word count and average speaking speed--possibly with a text with an insisible muted voice at the begining to verify)
  * accessibility
+ * alphabetize options menu
  * Localization
  * pull all magic strings out & into a localization object
  * spanish & mandarin, see a language you want added?

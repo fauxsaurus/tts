@@ -14,6 +14,13 @@
 	-webkit-text-size-adjust: 100%;
 }
 
+html,
+body {
+	height: 100%;
+	padding: 0;
+	width: 100%;
+}
+
 .skip-to-link {
 	font-size: 0;
 	position: absolute;
@@ -42,7 +49,7 @@ h1 {
 }
 
 button {
-	border-radius: 8px;
+	border-radius: 0;
 	border: 1px solid transparent;
 	padding: 0.6em 1.2em;
 	font-size: 1em;
@@ -62,13 +69,10 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
 	:root {
-		color: #213547;
-		background-color: #ffffff;
-	}
-	a:hover {
-		color: #747bff;
+		color: #222;
+		background-color: #fff;
 	}
 	button {
-		background-color: #f9f9f9;
+		background-color: #fff;
 	}
 }
