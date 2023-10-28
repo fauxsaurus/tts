@@ -24,3 +24,7 @@
 .dropdown::-ms-expand {
 	display: none;
 }
+
+.dropdown option {
+	background: var(--color-background);
+}
