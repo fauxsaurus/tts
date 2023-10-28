@@ -74,9 +74,9 @@ const App = () => {
 			<form class="layout-grid" onSubmit={event => event.preventDefault()}>
 				<header class="layout-top">
 					<button class="toggle-menu" title="Toggle Options Menu">
-						<label for="toggle-menu-options">options/Logo</label>
+						<label for="toggle-menu-options"></label>
 					</button>
-					<label for="text-to-read-aloud">
+					<label class="stretch" for="text-to-read-aloud">
 						<h1>Text to Speech</h1>
 					</label>
 					<button class="toggle-menu" title="Toggle Help Menu">
@@ -172,35 +172,33 @@ const App = () => {
 					<a target="_blank">View Source Code</a>
 				</aside>
 				<footer class="layout-bottom">
-					<button disabled title="Rewind">
-						⏪
-					</button>
-					<button
-						onClick={event => {
-							event.preventDefault()
+					<button disabled title="Rewind"></button>
+					<div class="stretch">
+						<button
+							onClick={event => {
+								event.preventDefault()
 
-							if (isPlaying()) return void synth.pause()
-							/** @note resume is *very* important. Not only does it save the user's spot, but running the code below when synth is paused crashes the entire speech synthesis service so hard that not even the [MDN demo](https://mdn.github.io/dom-examples/web-speech-api/speak-easy-synthesis/) works until the computer is restareted */
-							if (synth.paused) return void synth.resume()
+								if (isPlaying()) return void synth.pause()
+								/** @note resume is *very* important. Not only does it save the user's spot, but running the code below when synth is paused crashes the entire speech synthesis service so hard that not even the [MDN demo](https://mdn.github.io/dom-examples/web-speech-api/speak-easy-synthesis/) works until the computer is restareted */
+								if (synth.paused) return void synth.resume()
 
-							const selectedVoiceRef = selectedVoice()
-							if (!selectedVoiceRef) throw new Error('No Selected Voice!')
+								const selectedVoiceRef = selectedVoice()
+								if (!selectedVoiceRef) throw new Error('No Selected Voice!')
 
-							utterance().pitch = pitch() / 100
-							utterance().rate = speed()
-							utterance().text = text()
-							utterance().voice = selectedVoiceRef
-							utterance().volume = volume() / 100
+								utterance().pitch = pitch() / 100
+								utterance().rate = speed()
+								utterance().text = text()
+								utterance().voice = selectedVoiceRef
+								utterance().volume = volume() / 100
 
-							synth.speak(utterance())
-						}}
-						title={isPlaying() ? 'Pause' : 'Play'}
-					>
-						{isPlaying() ? '⏸' : '⏵'}
-					</button>
-					<button disabled title="Fast Forward">
-						⏩
-					</button>
+								synth.speak(utterance())
+							}}
+							title={isPlaying() ? 'Pause' : 'Play'}
+						>
+							{isPlaying() ? '⏸' : '⏵'}
+						</button>
+					</div>
+					<button disabled title="Fast Forward"></button>
 				</footer>
 			</form>
 		</>

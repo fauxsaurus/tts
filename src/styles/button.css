@@ -6,11 +6,15 @@ button {
 	font-size: 1em;
 	font-weight: 500;
 	font-family: inherit;
-	padding: 0.6em 1.2em;
 	position: relative;
 	transition: border-color 0.25s;
 	-webkit-user-select: none;
 	user-select: none;
+	width: var(--option-icon-length);
+}
+
+button:not(.stretch) {
+	aspect-ratio: 1 / 1;
 }
 
 button:focus,
