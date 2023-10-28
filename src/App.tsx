@@ -63,6 +63,9 @@ const App = () => {
 
 	return (
 		<>
+			<a hidden href="#content">
+				Skip to content
+			</a>
 			<input checked hidden id="toggle-menu-options" type="checkbox" />
 			<input checked hidden id="toggle-menu-help" type="checkbox" />
 			<form class="layout-grid" onSubmit={event => event.preventDefault()}>
@@ -147,6 +150,7 @@ const App = () => {
 				</aside>
 				<textarea
 					class="layout-center"
+					id="content"
 					onChange={event => setText(event.currentTarget.value)}
 					placeholder={CONFIG.placholder}
 				>
