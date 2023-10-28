@@ -51,6 +51,7 @@ export const Slider = (props: IProps) => {
 				min={props.min}
 				onInput={event => props.onInput(event.currentTarget.valueAsNumber)}
 				step={props.step}
+				title={`${props.name}-number-field`}
 				type="number"
 				value={props.value}
 			/>
