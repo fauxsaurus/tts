@@ -1,5 +1,5 @@
 import {createSignal} from 'solid-js'
-import './styles/App.css'
+import './styles/'
 import {Dropdown, Slider} from './components'
 
 /** @todo

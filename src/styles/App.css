@@ -35,8 +35,6 @@ main {
 }
 
 .layout-grid {
-	--color-red: #c33;
-
 	display: grid;
 	grid-template-columns: var(--menu-options-width) 2fr var(--menu-help-width);
 	grid-template-rows: min-content 1fr min-content;
@@ -48,7 +46,7 @@ main {
 }
 
 .layout-top {
-	background: var(--color-red);
+	background: var(--color-theme);
 	border-bottom: 1px solid #000;
 	display: flex;
 	grid-area: 1 / 1 / 2 / 4;
@@ -66,7 +64,7 @@ main {
 	grid-area: 2 / 3 / 3 / 4;
 }
 .layout-bottom {
-	background: var(--color-red);
+	background: var(--color-theme);
 	border-top: 1px solid #000;
 	display: flex;
 	grid-area: 3 / 1 / 4 / 4;
@@ -90,10 +88,6 @@ textarea {
 	overflow-y: auto;
 }
 
-.menu-options {
-	--option-icon-length: 2rem;
-}
-
 .menu-options fieldset {
 	border: 0;
 	border-bottom: 1px solid #000;
@@ -103,7 +97,7 @@ textarea {
 }
 
 .menu-options legend:not([hidden]) {
-	background-color: var(--color-red);
+	background-color: var(--color-theme);
 	border-bottom: 1px solid #000;
 	display: block;
 	font-size: 0.8rem;
@@ -119,20 +113,6 @@ textarea {
 	flex: 0 0 auto;
 }
 
-.menu-options button,
-.menu-options .dropdown label {
-	background-color: var(--color-red);
-	display: block;
-	float: left;
-	height: var(--option-icon-length);
-	padding: 0;
-	position: relative;
-	text-align: center;
-	width: var(--option-icon-length);
-	-webkit-user-select: none;
-	user-select: none;
-}
-
 .menu-options input {
 	margin: 0;
 }
@@ -143,17 +123,4 @@ textarea {
 
 .toggle-menu {
 	position: relative;
-}
-
-button label {
-	height: 100%;
-	width: 100%;
-}
-button label::after {
-	content: '';
-	height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
 }

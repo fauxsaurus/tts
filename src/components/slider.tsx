@@ -23,7 +23,7 @@ export const Slider = (props: IProps) => {
 			<label
 				data-value={props.value}
 				style={{
-					background: `linear-gradient(to right, var(--color-red) ${
+					background: `linear-gradient(to right, var(--color-theme) ${
 						(props.value / props.max) * 100
 					}%, transparent ${(props.value / props.max) * 100}%)`,
 				}}
