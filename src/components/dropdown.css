@@ -1,6 +1,7 @@
 .dropdown {
 	align-items: center;
 	display: flex;
+	gap: 1px;
 }
 
 /** @note select styles adapted from: https://www.filamentgroup.com/lab/select-css.html*/

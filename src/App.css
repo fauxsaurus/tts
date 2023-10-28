@@ -113,7 +113,7 @@ textarea {
 	padding: 0;
 }
 
-.menu-options legend {
+.menu-options legend:not([hidden]) {
 	background-color: var(--color-red);
 	border-bottom: 1px solid #000;
 	display: block;
@@ -122,64 +122,16 @@ textarea {
 	text-transform: capitalize;
 	width: 100%;
 }
-fieldset .slider {
-	align-items: center;
-	display: flex;
-}
 
-.slider .range {
-	height: var(--option-icon-length);
-	flex: auto;
-	position: relative;
-}
-
-.slider .range > * {
-	height: 100%;
-	position: absolute;
-	width: 100%;
-}
 .stretch {
 	flex: 1 1 auto;
 }
 .shrink {
 	flex: 0 0 auto;
 }
-.slider > * {
-	float: left;
-	margin: 0;
-}
-
-.slider meter {
-	border: 0;
-	border-radius: 0;
-}
-
-.slider meter::-webkit-meter-inner-element {
-	height: 100%;
-}
-.slider meter::-webkit-meter-bar {
-	border: 0;
-	border-radius: 0;
-	height: 100%;
-}
-
-.slider [type='range'] {
-	opacity: 0;
-	height: 100%;
-	width: 100%;
-}
-
-.slider [type='number'] {
-	background: transparent;
-	border: 0;
-	border-radius: 0;
-	height: var(--option-icon-length);
-	padding: 0;
-	text-align: right;
-}
 
 .menu-options button,
-.menu-options label {
+.menu-options .dropdown label {
 	background-color: var(--color-red);
 	display: block;
 	float: left;

@@ -1,6 +1,9 @@
+import './slider.css'
+
 type IProps = {
 	max: number
 	min: number
+	name: string
 	onInput: (value: number) => void
 	step: number
 	unit?: string
@@ -17,8 +20,16 @@ export const Slider = (props: IProps) => {
 			>
 				-
 			</button>
-			<div class="range stretch" title={`${props.min}-${props.max}`}>
-				<meter max={props.max} min={props.min} value={props.value}></meter>
+			<label
+				data-value={props.value}
+				style={{
+					background: `linear-gradient(to right, var(--color-red) ${
+						(props.value / props.max) * 100
+					}%, transparent ${(props.value / props.max) * 100}%)`,
+				}}
+				title={`${props.min}-${props.max}`}
+			>
+				{props.name}
 				<input
 					max={props.max}
 					min={props.min}
@@ -27,7 +38,7 @@ export const Slider = (props: IProps) => {
 					type="range"
 					value={props.value}
 				/>
-			</div>
+			</label>
 			<button
 				disabled={props.value + props.step >= props.max}
 				onClick={() => props.onInput(props.value + props.step)}
@@ -40,6 +51,7 @@ export const Slider = (props: IProps) => {
 				min={props.min}
 				onInput={event => props.onInput(event.currentTarget.valueAsNumber)}
 				step={props.step}
+				title={`${props.name}-number-field`}
 				type="number"
 				value={props.value}
 			/>
