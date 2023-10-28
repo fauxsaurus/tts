@@ -85,6 +85,29 @@ const App = () => {
 				</header>
 				<aside class="layout-left menu-options">
 					<fieldset>
+						<legend>Language</legend>
+						<Dropdown
+							disabled
+							onInput={() => void 0}
+							options={{English: 'English'}}
+							name="language"
+							value="English"
+						/>
+					</fieldset>
+					<fieldset>
+						<legend hidden>Pitch</legend>
+						{/* note the actual values are 0-2 */}
+						<Slider
+							max={200}
+							min={0}
+							name="Pitch"
+							onInput={setPitch}
+							step={1}
+							unit="%"
+							value={pitch()}
+						/>
+					</fieldset>
+					<fieldset>
 						<legend hidden>Speed</legend>
 						{/* @note actual values are 10-0.1 */}
 						<Slider
@@ -122,35 +145,6 @@ const App = () => {
 							step={1}
 							unit="%"
 							value={volume()}
-						/>
-					</fieldset>
-					{/* <fieldset>
-						<legend>Loop</legend>
-						<label for="option-loop" title="loop"></label>
-						<input id="option-loop" hidden type="checkbox" />
-						<span>On/Off</span>
-					</fieldset> */}
-					<fieldset>
-						<legend>Language</legend>
-						<Dropdown
-							disabled
-							onInput={() => void 0}
-							options={{English: 'English'}}
-							name="language"
-							value="English"
-						/>
-					</fieldset>
-					<fieldset>
-						<legend hidden>Pitch</legend>
-						{/* note the actual values are 0-2 */}
-						<Slider
-							max={200}
-							min={0}
-							name="Pitch"
-							onInput={setPitch}
-							step={1}
-							unit="%"
-							value={pitch()}
 						/>
 					</fieldset>
 				</aside>
