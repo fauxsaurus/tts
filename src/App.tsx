@@ -4,16 +4,15 @@ import {Dropdown, Slider} from './components'
 
 /** @todo
  * UX
+ * use an equilateral SVG triangle for dropdowns
+ * SVG & PNG (for iOS... come on, Apple, get your _stuff_ together, it's been a thing for over [*three* years now](https://caniuse.com/link-icon-svg) logo
  * make settings work once the audio has been paused
  * dark mode
  * holding the button down should continue to increment the value until the user lifts it up (or hits the limit)
- * ✓
  * button to put help text into the text area & read aloud
  * save options into local storage (with a version # for switch incremental functionality or just use Object.assign(defaultoptions, saved options||{}))
  * 	highlight spoken text, time taken/remaining (or that very least what sentence chunk out of what--or approximate it? test by trying to get the word count and average speaking speed--possibly with a text with an insisible muted voice at the begining to verify)
  * accessibility
- * SVG & PNG (for iOS... come on, Apple, get your _stuff_ together, it's been a thing for over [*three* years now](https://caniuse.com/link-icon-svg) logo
- * 	skip to link in the before the aside
  * Localization
  * pull all magic strings out & into a localization object
  * spanish & mandarin, see a language you want added?
@@ -63,7 +62,7 @@ const App = () => {
 
 	return (
 		<>
-			<a hidden href="#content">
+			<a class="skip-to-link" href="#text-to-read-aloud">
 				Skip to content
 			</a>
 			<input checked hidden id="toggle-menu-options" type="checkbox" />
@@ -73,9 +72,9 @@ const App = () => {
 					<button class="toggle-menu" title="Toggle Options Menu">
 						<label for="toggle-menu-options">options/Logo</label>
 					</button>
-					<h1>
-						<abbr title="Text to Speech">TTS</abbr>
-					</h1>
+					<label for="text-to-read-aloud">
+						<h1>Text to Speech</h1>
+					</label>
 					<button class="toggle-menu" title="Toggle Help Menu">
 						<label for="toggle-menu-help">?</label>
 					</button>
@@ -153,7 +152,8 @@ const App = () => {
 				</aside>
 				<textarea
 					class="layout-center"
-					id="content"
+					id="text-to-read-aloud"
+					name="text-to-read-aloud"
 					onChange={event => setText(event.currentTarget.value)}
 					placeholder={CONFIG.placholder}
 				>
