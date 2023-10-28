@@ -82,11 +82,12 @@ const App = () => {
 				</header>
 				<aside class="layout-left menu-options">
 					<fieldset>
-						<legend>Speed</legend>
+						<legend hidden>Speed</legend>
 						{/* @note actual values are 10-0.1 */}
 						<Slider
 							max={10}
 							min={0.1}
+							name="Speed"
 							onInput={setSpeed}
 							step={0.1}
 							unit="x"
@@ -108,11 +109,12 @@ const App = () => {
 						/>
 					</fieldset>
 					<fieldset>
-						<legend>Volume</legend>
+						<legend hidden>Volume</legend>
 						{/* actual values are 0-1 */}
 						<Slider
 							max={100}
 							min={0}
+							name="Volume"
 							onInput={setVolume}
 							step={1}
 							unit="%"
@@ -136,11 +138,12 @@ const App = () => {
 						/>
 					</fieldset>
 					<fieldset>
-						<legend>Pitch</legend>
+						<legend hidden>Pitch</legend>
 						{/* note the actual values are 0-2 */}
 						<Slider
 							max={200}
 							min={0}
+							name="Pitch"
 							onInput={setPitch}
 							step={1}
 							unit="%"
