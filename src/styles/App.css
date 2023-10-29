@@ -25,6 +25,23 @@ h1 {
 	display: none;
 }
 
+[data-icon] {
+	background-position: center;
+	background-size: 75% 75%;
+}
+[data-icon='add'] {
+	background-image: url('../icons/add.svg');
+}
+[data-icon='minus'] {
+	background-image: url('../icons/minus.svg');
+}
+[data-icon='play'] {
+	background-image: url('../icons/arrow-right.svg');
+}
+[data-icon='pause'] {
+	background-image: url('../icons/pause.svg');
+}
+
 /** @note Special thanks to https://cssgrid-generator.netlify.app/ for the grid code */
 
 /**

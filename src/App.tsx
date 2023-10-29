@@ -173,6 +173,7 @@ const App = () => {
 					<button disabled title="Rewind"></button>
 					<div class="stretch">
 						<button
+							data-icon={isPlaying() ? 'pause' : 'play'}
 							onClick={event => {
 								event.preventDefault()
 
@@ -192,9 +193,7 @@ const App = () => {
 								synth.speak(utterance())
 							}}
 							title={isPlaying() ? 'Pause' : 'Play'}
-						>
-							{isPlaying() ? '⏸' : '⏵'}
-						</button>
+						/>
 					</div>
 					<button disabled title="Fast Forward"></button>
 				</footer>

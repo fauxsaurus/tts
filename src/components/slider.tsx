@@ -15,11 +15,10 @@ export const Slider = (props: IProps) => {
 	return (
 		<div class="slider">
 			<button
+				data-icon="minus"
 				disabled={props.value - props.step <= props.min}
 				onClick={() => props.onInput(props.value - props.step)}
-			>
-				-
-			</button>
+			/>
 			<label
 				data-value={props.value}
 				style={{
@@ -40,11 +39,10 @@ export const Slider = (props: IProps) => {
 				/>
 			</label>
 			<button
+				data-icon="add"
 				disabled={props.value + props.step >= props.max}
 				onClick={() => props.onInput(props.value + props.step)}
-			>
-				+
-			</button>
+			/>
 			<input
 				class="shrink"
 				max={props.max}
