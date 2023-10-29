@@ -5,6 +5,7 @@
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
+	background-color: var(--color-background);
 	background-image: url('../icons/arrow-down.svg'),
 		linear-gradient(
 			to right,

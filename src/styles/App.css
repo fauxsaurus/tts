@@ -6,6 +6,7 @@ main {
 header,
 footer {
 	align-items: center;
+	color: var(--color-white);
 	text-align: center;
 }
 
@@ -114,6 +115,8 @@ h3 {
 
 textarea {
 	border: 0;
+	background: var(--color-background);
+	color: var(--color-text);
 	resize: none;
 }
 

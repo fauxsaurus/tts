@@ -3,12 +3,9 @@ import './styles/'
 import {Dropdown, Slider} from './components'
 
 /** @todo
- * icons
- * * use an equilateral SVG triangle for dropdowns (rounded corners)
- * * play, pause, FF, Rewind, logo
+ * icons: FF, Rewind, logo
  * SVG & PNG (for iOS... come on, Apple, get your _stuff_ together, it's been a thing for over [*three* years now](https://caniuse.com/link-icon-svg) logo
  * make settings work once the audio has been paused
- * dark mode
  * holding the button down should continue to increment the value until the user lifts it up (or hits the limit)
  * button to put help text into the text area & read aloud
  * save options into local storage (with a version # for switch incremental functionality or just use Object.assign(defaultoptions, saved options||{}))
