@@ -10,8 +10,6 @@ import {Dropdown, Slider} from './components'
  * button to put help text into the text area & read aloud
  * save options into local storage (with a version # for switch incremental functionality or just use Object.assign(defaultoptions, saved options||{}))
  * 	highlight spoken text, time taken/remaining (or that very least what sentence chunk out of what--or approximate it? test by trying to get the word count and average speaking speed--possibly with a text with an insisible muted voice at the begining to verify)
- * accessibility
- * alphabetize options menu
  * Localization
  * pull all magic strings out & into a localization object
  * spanish & mandarin, see a language you want added?
@@ -68,8 +66,8 @@ const App = () => {
 			<input checked hidden id="toggle-menu-help" type="checkbox" />
 			<form class="layout-grid" onSubmit={event => event.preventDefault()}>
 				<header class="layout-top">
-					<button class="toggle-menu" title="Toggle Options Menu">
-						<label for="toggle-menu-options"></label>
+					<button class="toggle-menu" data-icon="options" title="Toggle Options Menu">
+						<label for="toggle-menu-options">Options</label>
 					</button>
 					<label class="stretch" for="text-to-read-aloud">
 						<h1>Text to Speech</h1>

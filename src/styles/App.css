@@ -29,6 +29,8 @@ h1 {
 [data-icon] {
 	background-position: center;
 	background-size: 75% 75%;
+	color: transparent;
+	font-size: 0;
 }
 [data-icon='add'] {
 	background-image: url('../icons/add.svg');
