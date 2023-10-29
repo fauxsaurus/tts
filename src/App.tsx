@@ -3,8 +3,6 @@ import './styles/'
 import {Dropdown, Slider} from './components'
 
 /** @todo
- * 1px gap between header & footer elements (give the middle one a stretch prop) & make the edge elements have the same width as height
- * Remove display non-properties from toggleable sidebars. The help menu is still displayed after being hidden because of the padding. Said border box sizing to whatever check index CSS for the default they use. Probably apply it to everything.
  * icons
  * * use an equilateral SVG triangle for dropdowns (rounded corners)
  * * play, pause, FF, Rewind, logo

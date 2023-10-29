@@ -5,7 +5,19 @@
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
-	background: transparent;
+	background-image: url('../icons/arrow-down.svg'),
+		linear-gradient(
+			to right,
+			var(--color-theme) var(--option-icon-length),
+			transparent var(--option-icon-length)
+		);
+	background-position:
+		calc(var(--option-icon-length) / 4) center,
+		0% 0%;
+	background-repeat: no-repeat;
+	background-size:
+		calc(var(--option-icon-length) / 2) calc(var(--option-icon-length) / 2),
+		100% 100%;
 	border: 0;
 	border-radius: 0;
 	box-sizing: border-box;
