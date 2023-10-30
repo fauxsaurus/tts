@@ -3,7 +3,7 @@ import './styles/'
 import {Dropdown, Slider} from './components'
 
 /** @todo
- * vertically align header `<h1>`...
+ * button cursor pointer is not working...
  * improve help button icon
  * PNG (for iOS... come on, Apple, get your _stuff_ together, it's been a thing for over [*three* years now](https://caniuse.com/link-icon-svg) logo
  * make settings work once the audio has been paused
