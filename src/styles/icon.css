@@ -1,0 +1,33 @@
+[data-icon] {
+	background-position: center;
+	background-size: auto 75%;
+	background-repeat: no-repeat;
+	color: transparent;
+	font-size: 0;
+}
+
+[data-icon='logo'] {
+	background-image: url('../icons/logo.svg');
+	background-size: 100% 100%;
+}
+
+[data-icon='add'] {
+	background-image: url('../icons/add.svg');
+}
+[data-icon='subtract'] {
+	background-image: url('../icons/subtract.svg');
+}
+
+[data-icon='play'] {
+	background-image: url('../icons/play.svg');
+}
+[data-icon='pause'] {
+	background-image: url('../icons/pause.svg');
+}
+
+[data-icon='fast-forward'] {
+	background-image: url('../icons/fast-forward.svg');
+}
+[data-icon='rewind'] {
+	background-image: url('../icons/rewind.svg');
+}

@@ -1,0 +1,43 @@
+/** @note select styles adapted from: https://www.filamentgroup.com/lab/select-css.html*/
+
+/* class applies to select element itself, not a wrapper element */
+.dropdown {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: var(--color-background);
+	background-image: url('../icons/arrow-down.svg'),
+		linear-gradient(
+			to right,
+			var(--color-theme) var(--option-icon-length),
+			transparent var(--option-icon-length)
+		);
+	background-position:
+		calc(var(--option-icon-length) / 4) center,
+		0% 0%;
+	background-repeat: no-repeat;
+	background-size:
+		calc(var(--option-icon-length) / 2) calc(var(--option-icon-length) / 2),
+		100% 100%;
+	border: 0;
+	border-radius: 0;
+	box-sizing: border-box;
+	color: var(--color-text);
+	display: block;
+	float: left;
+	font-family: sans-serif;
+	font-size: 0.8rem;
+	height: var(--option-icon-length);
+	margin: 0;
+	text-indent: calc(var(--option-icon-length) + 0.5rem);
+	width: 100%;
+}
+
+/* Hide arrow icon in IE browsers */
+.dropdown::-ms-expand {
+	display: none;
+}
+
+.dropdown option {
+	background: var(--color-background);
+}

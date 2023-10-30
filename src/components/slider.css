@@ -1,0 +1,41 @@
+/* 
+	@note sigh, this won't be [exerpimental](https://developer.mozilla.org/en-US/docs/Web/CSS/attr) one day... :/
+.slider [data-value] {
+	--percentage: attr(data-value %);
+
+	background: linear-gradient(to right, #fc0 var(--percentage), transparent var(--percentage));
+} */
+
+.slider {
+	align-items: center;
+	display: flex;
+	gap: 1px;
+}
+
+.slider label {
+	align-items: center;
+	display: flex;
+	height: var(--option-icon-length);
+	flex: 1 1 auto;
+	position: relative;
+	text-indent: 0.5rem;
+}
+
+.slider [type='range'] {
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.slider [type='number'] {
+	background: transparent;
+	color: var(--color-text);
+	border: 0;
+	border-radius: 0;
+	height: var(--option-icon-length);
+	padding: 0;
+	text-align: right;
+}

@@ -1,0 +1,163 @@
+main {
+	height: 100%;
+	width: 100%;
+}
+
+header,
+footer {
+	align-items: center;
+	color: var(--color-white);
+	text-align: center;
+}
+
+header .stretch,
+footer .stretch,
+footer .stretch button {
+	border-left: 1px solid var(--color-background);
+	border-right: 1px solid var(--color-background);
+	height: 100%;
+}
+
+h1 {
+	font-size: 1.44rem;
+}
+
+[id^='toggle-menu-']:not(:checked) + aside {
+	display: none;
+}
+
+/** @note Special thanks to https://cssgrid-generator.netlify.app/ for the grid code */
+
+/**
+	<input checked hidden id="toggle-menu-options" type="checkbox" />
+	<input checked hidden id="toggle-menu-help" type="checkbox" />
+*/
+
+[id='toggle-menu-options']:checked ~ .layout-grid {
+	--menu-options-width: 1fr;
+}
+[id='toggle-menu-options']:not(:checked) ~ .layout-grid {
+	--menu-options-width: 0fr;
+}
+[id='toggle-menu-options']:not(:checked) ~ .layout-grid .menu-options {
+	display: none;
+}
+
+[id='toggle-menu-help']:checked ~ .layout-grid {
+	--menu-help-width: 1fr;
+}
+[id='toggle-menu-help']:not(:checked) ~ .layout-grid {
+	--menu-help-width: 0fr;
+}
+[id='toggle-menu-help']:not(:checked) ~ .layout-grid .menu-help {
+	display: none;
+}
+
+.layout-grid {
+	display: grid;
+	grid-template-columns: var(--menu-options-width) 2fr var(--menu-help-width);
+	grid-template-rows: min-content 1fr min-content;
+	grid-column-gap: 0;
+	grid-row-gap: 0;
+	height: 100%;
+
+	transition: all 0.5s;
+}
+
+.layout-top {
+	background: var(--color-theme);
+	border-bottom: 1px solid var(--color-background);
+	display: flex;
+	grid-area: 1 / 1 / 2 / 4;
+	justify-content: space-between;
+}
+.layout-left {
+	grid-area: 2 / 1 / 3 / 2;
+}
+
+.layout-center {
+	grid-area: 2 / 2 / 3 / 3;
+}
+
+.layout-right {
+	grid-area: 2 / 3 / 3 / 4;
+}
+.layout-bottom {
+	background: var(--color-theme);
+	border-top: 1px solid var(--color-background);
+	display: flex;
+	grid-area: 3 / 1 / 4 / 4;
+	justify-content: space-between;
+}
+
+.layout-bottom button:not(:first-child) {
+	border-left: 1px solid var(--color-background);
+}
+.layout-bottom button:not(:last-child) {
+	border-right: 1px solid var(--color-background);
+}
+
+header label.stretch {
+	align-items: center;
+	display: flex;
+}
+header h1 {
+	width: 100%;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+}
+
+textarea {
+	border: 0;
+	background: var(--color-background);
+	font-size: 1.25rem;
+	color: var(--color-text);
+	resize: none;
+}
+
+.menu-options,
+.menu-help {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.menu-options fieldset {
+	border: 0;
+	border-bottom: 1px solid #000;
+	margin-inline-start: 0;
+	margin-inline-end: 0;
+	padding: 0;
+}
+
+.menu-options legend:not([hidden]) {
+	background-color: var(--color-theme);
+	border-bottom: 1px solid #000;
+	display: block;
+	font-size: 0.8rem;
+	padding: 0 0.2rem;
+	text-transform: capitalize;
+	width: 100%;
+}
+
+.stretch {
+	flex: 1 1 auto;
+}
+.shrink {
+	flex: 0 0 auto;
+}
+
+.menu-options input {
+	margin: 0;
+}
+
+.menu-help {
+	padding: 0 1rem;
+}
+
+.toggle-menu {
+	position: relative;
+}

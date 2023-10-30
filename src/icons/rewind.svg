@@ -1,0 +1,12 @@
+<svg height="100" width="100" xmlns="http://www.w3.org/2000/svg">
+	<path
+		d="M50,15 15,72.5 85,72.5Z"
+		fill="#eee"
+		transform="translate(30 -15) rotate(-90, 50, 50) scale(0.7) "
+	/>
+	<path
+		d="M50,15 15,72.5 85,72.5Z"
+		fill="#eee"
+		transform="translate(0 -15) rotate(-90, 50, 50) scale(0.7) "
+	/>
+</svg>
