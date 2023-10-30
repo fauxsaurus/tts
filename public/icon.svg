@@ -1,0 +1,53 @@
+<svg height="1000" width="1000" style="border-radius: 25%" xmlns="http://www.w3.org/2000/svg">
+	<mask id="mask-sound-waves">
+		<path d="m525,500 400,-700 0,1400z" fill="#fff" />
+	</mask>
+	<rect id="background" fill="#c33" x="0" y="0" width="1000" height="1000" />
+	<g
+		fill="none"
+		stroke="#fff"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		stroke-width="35"
+	>
+		<g transform="translate(0,0) scale(0.75)">
+			<path d="m375,200 350,0 0,600 -450,0 0,-500 100,-100 0,100 -100,0z" id="paper" />
+			<!-- lines -->
+			<path d="m450,300 200,0" />
+
+			<path d="m350,400 300,0" />
+			<path d="m350,500 300,0" />
+			<path d="m350,600 300,0" />
+			<path d="m350,700 300,0" />
+		</g>
+		<g id="speaker" transform="translate(225,225) scale(0.75)">
+			<path d="m150,375 175,0 200,-150 0,550 -200,-150 -175,0z" fill="#fff" />
+			<g id="sound-waves" mask="url(#mask-sound-waves)">
+				<circle cx="560" cy="500" r="125" />
+				<circle cx="560" cy="500" r="220" />
+				<circle cx="560" cy="500" r="315" />
+			</g>
+			<g fill="#fff" id="rounded-edges" stroke="none">
+				<circle cx="595" cy="380" r="17.5" />
+				<circle cx="595" cy="620" r="17.5" />
+
+				<circle cx="640" cy="295" r="17.5" />
+				<circle cx="640" cy="705" r="17.5" />
+
+				<circle cx="690" cy="212.5" r="17.5" />
+				<circle cx="690" cy="787.5" r="17.5" />
+			</g>
+		</g>
+	</g>
+	<rect
+		id="skeuomorphic-shading"
+		x="-50"
+		y="-50"
+		rx="300"
+		width="1100"
+		height="1050"
+		stroke="rgba(0,0,0,0.2)"
+		stroke-width="100"
+		fill="none"
+	/>
+</svg>

@@ -2,6 +2,8 @@
 
 A tiny text to speech web app.
 
+![App Icon](./public/icon.svg)
+
 ## Usage
 
 ```bash

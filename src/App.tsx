@@ -3,7 +3,6 @@ import './styles/'
 import {Dropdown, Slider} from './components'
 
 /** @todo
- * icons: FF, Rewind, logo
  * SVG & PNG (for iOS... come on, Apple, get your _stuff_ together, it's been a thing for over [*three* years now](https://caniuse.com/link-icon-svg) logo
  * make settings work once the audio has been paused
  * holding the button down should continue to increment the value until the user lifts it up (or hits the limit)
@@ -19,6 +18,7 @@ import {Dropdown, Slider} from './components'
  * position absolute sidebars on portrait with a min rem width
  * CSS grid needs to respect zooming
  * what happens if the text changes between pausing... (need a way to clear that utterance and start anew/from a certain point)
+ * tweak icon to make the lines thicker (to look better on smaller elements--e.g., the options menu toggle and chrome tab favicons)
  */
 
 /* <button onClick={() => setCount(count => count + 1)}>count is {count()}</button> */
@@ -66,7 +66,7 @@ const App = () => {
 			<input checked hidden id="toggle-menu-help" type="checkbox" />
 			<form class="layout-grid" onSubmit={event => event.preventDefault()}>
 				<header class="layout-top">
-					<button class="toggle-menu" data-icon="options" title="Toggle Options Menu">
+					<button class="toggle-menu" data-icon="logo" title="Toggle Options Menu">
 						<label for="toggle-menu-options">Options</label>
 					</button>
 					<label class="stretch" for="text-to-read-aloud">
