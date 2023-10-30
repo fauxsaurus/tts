@@ -142,6 +142,7 @@ const App = () => {
 					</fieldset>
 				</aside>
 				<textarea
+					autofocus
 					class="layout-center"
 					id="text-to-read-aloud"
 					name="text-to-read-aloud"
