@@ -165,7 +165,7 @@ const App = () => {
 					<a target="_blank">View Source Code</a>
 				</aside>
 				<footer class="layout-bottom">
-					<button disabled title="Rewind"></button>
+					<button data-icon="rewind" disabled title="Rewind"></button>
 					<div class="stretch">
 						<button
 							data-icon={isPlaying() ? 'pause' : 'play'}
@@ -190,7 +190,7 @@ const App = () => {
 							title={isPlaying() ? 'Pause' : 'Play'}
 						/>
 					</div>
-					<button disabled title="Fast Forward"></button>
+					<button data-icon="fast-forward" disabled title="Fast Forward"></button>
 				</footer>
 			</form>
 		</>

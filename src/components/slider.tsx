@@ -15,7 +15,7 @@ export const Slider = (props: IProps) => {
 	return (
 		<div class="slider">
 			<button
-				data-icon="minus"
+				data-icon="subtract"
 				disabled={props.value - props.step <= props.min}
 				onClick={() => props.onInput(props.value - props.step)}
 			>
