@@ -6,7 +6,7 @@
 	--color-text: var(--color-black);
 	--color-theme: #c33;
 
-	--option-icon-length: 2rem;
+	--option-icon-length: 2.5rem;
 
 	background: var(--color-background);
 	color: var(--color-text);
