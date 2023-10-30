@@ -15,6 +15,10 @@ button {
 	width: var(--option-icon-length);
 }
 
+button:disabled {
+	opacity: 0.5;
+}
+
 button:not(.stretch) {
 	aspect-ratio: 1 / 1;
 }
