@@ -1,13 +1,25 @@
-html,
-body {
-	height: 100%;
-	padding: 0;
-	width: 100%;
-}
-
 main {
 	height: 100%;
 	width: 100%;
+}
+
+header,
+footer {
+	align-items: center;
+	color: var(--color-white);
+	text-align: center;
+}
+
+header .stretch,
+footer .stretch,
+footer .stretch button {
+	border-left: 1px solid var(--color-background);
+	border-right: 1px solid var(--color-background);
+	height: 100%;
+}
+
+h1 {
+	font-size: 1.44rem;
 }
 
 [id^='toggle-menu-']:not(:checked) + aside {
@@ -42,8 +54,6 @@ main {
 }
 
 .layout-grid {
-	--color-red: #c33;
-
 	display: grid;
 	grid-template-columns: var(--menu-options-width) 2fr var(--menu-help-width);
 	grid-template-rows: min-content 1fr min-content;
@@ -55,8 +65,8 @@ main {
 }
 
 .layout-top {
-	background: var(--color-red);
-	border-bottom: 1px solid #000;
+	background: var(--color-theme);
+	border-bottom: 1px solid var(--color-background);
 	display: flex;
 	grid-area: 1 / 1 / 2 / 4;
 	justify-content: space-between;
@@ -73,15 +83,26 @@ main {
 	grid-area: 2 / 3 / 3 / 4;
 }
 .layout-bottom {
-	background: var(--color-red);
-	border-top: 1px solid #000;
+	background: var(--color-theme);
+	border-top: 1px solid var(--color-background);
 	display: flex;
 	grid-area: 3 / 1 / 4 / 4;
 	justify-content: space-between;
 }
 
-button {
-	border-radius: 0;
+.layout-bottom button:not(:first-child) {
+	border-left: 1px solid var(--color-background);
+}
+.layout-bottom button:not(:last-child) {
+	border-right: 1px solid var(--color-background);
+}
+
+header label.stretch {
+	align-items: center;
+	display: flex;
+}
+header h1 {
+	width: 100%;
 }
 
 h1,
@@ -92,6 +113,9 @@ h3 {
 
 textarea {
 	border: 0;
+	background: var(--color-background);
+	font-size: 1.25rem;
+	color: var(--color-text);
 	resize: none;
 }
 
@@ -99,10 +123,6 @@ textarea {
 .menu-help {
 	overflow-x: hidden;
 	overflow-y: auto;
-}
-
-.menu-options {
-	--option-icon-length: 2rem;
 }
 
 .menu-options fieldset {
@@ -114,7 +134,7 @@ textarea {
 }
 
 .menu-options legend:not([hidden]) {
-	background-color: var(--color-red);
+	background-color: var(--color-theme);
 	border-bottom: 1px solid #000;
 	display: block;
 	font-size: 0.8rem;
@@ -130,20 +150,6 @@ textarea {
 	flex: 0 0 auto;
 }
 
-.menu-options button,
-.menu-options .dropdown label {
-	background-color: var(--color-red);
-	display: block;
-	float: left;
-	height: var(--option-icon-length);
-	padding: 0;
-	position: relative;
-	text-align: center;
-	width: var(--option-icon-length);
-	-webkit-user-select: none;
-	user-select: none;
-}
-
 .menu-options input {
 	margin: 0;
 }
@@ -154,17 +160,4 @@ textarea {
 
 .toggle-menu {
 	position: relative;
-}
-
-button label {
-	height: 100%;
-	width: 100%;
-}
-button label::after {
-	content: '';
-	height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
 }

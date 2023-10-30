@@ -13,18 +13,16 @@ export const Dropdown = <T,>(props: IProps<T>) => {
 		Object.entries(props.options).find(([, value]) => value === props.value)?.[0] ?? ''
 
 	return (
-		<div class="dropdown">
-			<label for={props.name}>▼</label>
-			<select
-				children={Object.keys(props.options).map(children => (
-					<option {...{children}} />
-				))}
-				disabled={props.disabled}
-				id={props.name}
-				name={props.name}
-				onInput={event => props.onInput(event.currentTarget.value)}
-				value={selectedValue}
-			/>
-		</div>
+		<select
+			class="dropdown"
+			children={Object.keys(props.options).map(children => (
+				<option {...{children}} />
+			))}
+			disabled={props.disabled}
+			id={props.name}
+			name={props.name}
+			onInput={event => props.onInput(event.currentTarget.value)}
+			value={selectedValue}
+		/>
 	)
 }

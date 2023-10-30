@@ -1,0 +1,7 @@
+<svg height="100" width="100" xmlns="http://www.w3.org/2000/svg">
+	<path
+		d="M50,15 15,72.5 85,72.5Z"
+		fill="#fff"
+		transform="rotate(90, 50, 50)"
+	/>
+</svg>

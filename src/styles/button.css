@@ -1,0 +1,55 @@
+button {
+	background-color: var(--color-theme);
+	border: 0;
+	border-radius: 0;
+	color: var(--color-white);
+	cursor: pointer;
+	font-size: 1em;
+	font-weight: 500;
+	font-family: inherit;
+	padding: 0;
+	position: relative;
+	transition: border-color 0.25s;
+	-webkit-user-select: none;
+	user-select: none;
+	width: var(--option-icon-length);
+}
+
+button:disabled {
+	opacity: 0.5;
+}
+
+button:not(.stretch) {
+	aspect-ratio: 1 / 1;
+}
+
+button:focus,
+button:focus-visible {
+	outline: 4px auto -webkit-focus-ring-color;
+}
+
+/** @note Full-size clickable label in button. */
+button label {
+	height: 100%;
+	width: 100%;
+}
+button label::after {
+	content: '';
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+/** @todo remove */
+.menu-options button,
+.menu-options .dropdown label {
+	background-color: var(--color-theme);
+	display: block;
+	float: left;
+	height: var(--option-icon-length);
+	padding: 0;
+	text-align: center;
+	width: var(--option-icon-length);
+}

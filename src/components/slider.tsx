@@ -15,7 +15,8 @@ export const Slider = (props: IProps) => {
 	return (
 		<div class="slider">
 			<button
-				disabled={props.value - props.step <= props.min}
+				data-icon="subtract"
+				disabled={props.value - props.step < props.min}
 				onClick={() => props.onInput(props.value - props.step)}
 			>
 				-
@@ -23,7 +24,7 @@ export const Slider = (props: IProps) => {
 			<label
 				data-value={props.value}
 				style={{
-					background: `linear-gradient(to right, var(--color-red) ${
+					background: `linear-gradient(to right, var(--color-theme) ${
 						(props.value / props.max) * 100
 					}%, transparent ${(props.value / props.max) * 100}%)`,
 				}}
@@ -40,7 +41,8 @@ export const Slider = (props: IProps) => {
 				/>
 			</label>
 			<button
-				disabled={props.value + props.step >= props.max}
+				data-icon="add"
+				disabled={props.value + props.step > props.max}
 				onClick={() => props.onInput(props.value + props.step)}
 			>
 				+
