@@ -2,7 +2,9 @@
 
 A tiny text to speech web app.
 
-![App Icon](./public/icon.svg)
+
+<img src="./public/icon.svg" width="100px" alt="App icon showing a speaker overlaying a text file."/>
+
 
 ## Usage
 
